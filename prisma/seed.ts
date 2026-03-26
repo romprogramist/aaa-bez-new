@@ -77,6 +77,27 @@ async function main() {
     });
     console.log("Seeded 10 assortment items.");
   }
+
+  // Seed customers
+  const customerCount = await prisma.customer.count();
+  if (customerCount > 0) {
+    console.log(`Already have ${customerCount} customers, skipping.`);
+  } else {
+    await prisma.customer.createMany({
+      data: [
+        { name: 'АО "Москоллектор"', order: 1 },
+        { name: 'ООО "Иркутская нефтяная компания"', order: 2 },
+        { name: 'ООО "Лукойл-Пермь"', order: 3 },
+        { name: 'АО "Метафракс Кемикалс"', order: 4 },
+        { name: 'АО "Газпромнефть-МНПЗ"', order: 5 },
+        { name: 'ПАО "Распадская"', order: 6 },
+        { name: 'АО "ОХК "Уралхим"', order: 7 },
+        { name: 'ФКП "Пермский Пороховой Завод"', order: 8 },
+        { name: 'АО "Ненецкая Нефтяная Компания"', order: 9 },
+      ],
+    });
+    console.log("Seeded 9 customers.");
+  }
 }
 
 main()

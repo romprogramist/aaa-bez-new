@@ -21,6 +21,12 @@ type AssortmentItem = {
   order: number;
 };
 
+type Customer = {
+  id: string;
+  name: string;
+  order: number;
+};
+
 const industries = [
   {
     icon: "🛢",
@@ -64,6 +70,7 @@ const fadeUp = {
 export default function ExplosionProofContent() {
   const [partners, setPartners] = useState<Partner[]>([]);
   const [assortment, setAssortment] = useState<AssortmentItem[]>([]);
+  const [customers, setCustomers] = useState<Customer[]>([]);
   const [activeItem, setActiveItem] = useState<AssortmentItem | null>(null);
 
   useEffect(() => {
@@ -73,6 +80,9 @@ export default function ExplosionProofContent() {
     fetch("/api/assortment")
       .then((r) => r.json())
       .then(setAssortment);
+    fetch("/api/customers")
+      .then((r) => r.json())
+      .then(setCustomers);
   }, []);
 
   return (
@@ -457,18 +467,18 @@ export default function ExplosionProofContent() {
             <motion.div
               {...fadeUp}
               transition={{ duration: 0.6 }}
-              className="rounded-3xl overflow-hidden border border-white/[0.08] bg-white/[0.03] relative group"
+              className="rounded-3xl overflow-hidden border border-white/[0.08] bg-white/[0.03] relative group self-start lg:sticky lg:top-24"
             >
               {(activeItem || assortment[0]) && (
                 <>
-                  <div className="relative aspect-[4/3]">
+                  <div className="relative aspect-[3/2] bg-[#111118] flex items-center justify-center">
                     <Image
                       src={(activeItem || assortment[0]).image}
                       alt={(activeItem || assortment[0]).title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-contain p-6 transition-transform duration-700 group-hover:scale-105 brightness-[0.9]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-[rgba(10,10,15,0.3)] to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-[rgba(10,10,15,0.15)] to-transparent" />
                   </div>
                   <div className="p-8 lg:p-10 -mt-16 relative z-1">
                     <h3 className="text-white text-2xl lg:text-3xl font-bold mb-4">
@@ -505,14 +515,14 @@ export default function ExplosionProofContent() {
                       : "border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/[0.12]"
                   }`}
                 >
-                  <div className="relative aspect-[3/2]">
+                  <div className="relative aspect-[3/2] bg-[#0a0a0f]">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover/card:scale-105"
+                      className="object-cover transition-transform duration-500 group-hover/card:scale-105 brightness-[0.85]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,15,0.85)] to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,15,0.9)] via-[rgba(10,10,15,0.35)] to-[rgba(10,10,15,0.25)]" />
                     {(activeItem?.id || assortment[0]?.id) === item.id && (
                       <div className="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-[#f5d100] shadow-[0_0_10px_rgba(245,209,0,0.5)]" />
                     )}
@@ -585,7 +595,64 @@ export default function ExplosionProofContent() {
         </div>
       </section>
 
-      {/* ===== 06: Форма ===== */}
+      {/* ===== 06: Наши заказчики ===== */}
+      <section className="relative bg-[#0a0a0f] py-24 lg:py-32 overflow-hidden">
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[rgba(245,209,0,0.03)] rounded-full blur-[120px]" />
+
+        <div className="relative max-w-[1400px] mx-auto px-6 lg:px-20">
+          <motion.div
+            {...fadeUp}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <span className="text-[#f5d100] text-sm font-semibold tracking-[4px] uppercase block mb-4">
+              06
+            </span>
+            <h2
+              className="text-white text-4xl lg:text-5xl font-bold uppercase tracking-tight"
+              style={{ fontFamily: "'Neutral Face', sans-serif" }}
+            >
+              Наши заказчики
+            </h2>
+            <p className="text-white/40 text-base mt-3">
+              Работаем с ведущими предприятиями отрасли
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {customers.map((customer, i) => (
+              <motion.div
+                key={customer.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: i * 0.06 }}
+                className="group bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 hover:bg-white/[0.06] hover:border-[rgba(245,209,0,0.15)] transition-all duration-500 relative overflow-hidden"
+              >
+                <div className="flex items-center gap-4">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{
+                      backgroundColor: "rgba(245,209,0,0.1)",
+                      border: "1px solid rgba(245,209,0,0.2)",
+                    }}
+                  >
+                    <span className="text-[#f5d100] text-sm font-bold">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                  <p className="text-white/80 text-sm font-semibold leading-tight group-hover:text-white transition-colors">
+                    {customer.name}
+                  </p>
+                </div>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-[rgba(245,209,0,0.03)] rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity -translate-y-1/2 translate-x-1/2" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== 07: Форма ===== */}
       <Application />
     </>
   );

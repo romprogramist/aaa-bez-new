@@ -42,3 +42,13 @@ model Assortment {
 
   @@map("assortment")
 }
+
+model Customer {
+  id        String   @id @default(uuid())
+  name      String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("customers")
+}
