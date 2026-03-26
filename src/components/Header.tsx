@@ -39,7 +39,7 @@ export default function Header() {
       >
         <div
           className={`max-w-[1400px] mx-auto px-6 flex items-center justify-between transition-[height] duration-300 ${
-            scrolled ? "h-16" : "h-[72px]"
+            scrolled ? "h-[72px]" : "h-[88px]"
           }`}
         >
           {/* Logo big */}
@@ -50,7 +50,7 @@ export default function Header() {
               width={265}
               height={110}
               className={`transition-[height] duration-300 w-auto ${
-                scrolled ? "h-9" : "h-11"
+                scrolled ? "h-12" : "h-16"
               }`}
               priority
             />
