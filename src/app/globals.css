@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #0a0a0f;
+  --color-foreground: #ffffff;
+  --color-yellow: #f5d100;
+  --color-yellow-hover: #ffdd16;
+  --color-dark: #1a0c0a;
+  --color-red: #bf0603;
+  --color-muted: rgba(255, 255, 255, 0.45);
+  --color-subtle: rgba(255, 255, 255, 0.06);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #0a0a0f;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+}
+
+/* No scroll lock */
+.no-scroll {
+  overflow: hidden;
+}
+
+/* ===== Swiper overrides ===== */
+.documents-swiper .swiper-button-next,
+.documents-swiper .swiper-button-prev {
+  color: #f5d100 !important;
+  width: 44px !important;
+  height: 44px !important;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  top: auto !important;
+  bottom: -60px !important;
+}
+.documents-swiper .swiper-button-prev {
+  left: auto !important;
+  right: 60px !important;
+}
+.documents-swiper .swiper-button-next {
+  right: 0 !important;
+}
+.documents-swiper .swiper-button-next:hover,
+.documents-swiper .swiper-button-prev:hover {
+  background: rgba(245, 209, 0, 0.15);
+  border-color: rgba(245, 209, 0, 0.3);
+}
+.documents-swiper .swiper-button-next::after,
+.documents-swiper .swiper-button-prev::after {
+  font-size: 16px !important;
+  font-weight: bold;
+}
+.documents-swiper {
+  padding-bottom: 80px !important;
+}
+
+/* ===== Keyframes ===== */
+@keyframes blobFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(60px, 40px) scale(1.1); }
+  66% { transform: translate(-30px, 80px) scale(0.95); }
+}
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-50px, 60px) scale(1.15); }
+  66% { transform: translate(40px, -30px) scale(0.9); }
+}
+@keyframes blobFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -50px) scale(1.05); }
+  66% { transform: translate(-60px, 30px) scale(1.1); }
+}
+@keyframes scanline {
+  0% { top: -2px; opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes ctaFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }

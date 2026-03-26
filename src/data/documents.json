@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "title": "Сертификат соответствия",
+    "description": "Сертификат партнёра LUIS+",
+    "image": "/images/docs/aaa-safety-luis.jpg",
+    "order": 1
+  },
+  {
+    "id": "2",
+    "title": "Лицензия",
+    "description": "Лицензия на осуществление деятельности",
+    "image": "/images/docs/llc-aaa-security.jpg",
+    "order": 2
+  },
+  {
+    "id": "3",
+    "title": "Свидетельство",
+    "description": "Свидетельство о регистрации",
+    "image": "/images/docs/certified-aaa.jpg",
+    "order": 3
+  }
+]
