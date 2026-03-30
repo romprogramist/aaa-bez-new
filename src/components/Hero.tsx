@@ -54,8 +54,9 @@ export default function Hero() {
         className="absolute top-[45%] right-20 -translate-y-1/2 z-3
           max-lg:right-10 max-md:static max-md:translate-y-0 max-md:flex max-md:justify-center max-md:w-full max-md:my-5 max-md:order-2"
       >
-        <div
-          className="relative w-[130px] h-[130px] rounded-full flex items-center justify-center text-center text-[13px] font-bold leading-tight cursor-pointer transition-transform duration-400 hover:scale-110 animate-[ctaFloat_5s_ease-in-out_infinite]
+        <a
+          href="#application"
+          className="relative w-[130px] h-[130px] rounded-full flex items-center justify-center text-center text-[13px] font-bold leading-tight cursor-pointer transition-transform duration-400 hover:scale-110 animate-[ctaFloat_5s_ease-in-out_infinite] no-underline
           max-lg:w-[110px] max-lg:h-[110px] max-lg:text-xs
           max-md:w-[90px] max-md:h-[90px] max-md:text-[10px] max-md:animate-none"
           style={{ backgroundColor: '#f5d100', color: '#1a0c0a' }}
@@ -63,7 +64,7 @@ export default function Hero() {
           {/* Ring */}
           <div className="absolute -inset-3 border border-dashed border-[rgba(245,209,0,0.3)] rounded-full animate-[ringRotate_12s_linear_infinite]" />
           Оставить<br />заявку
-        </div>
+        </a>
       </motion.div>
 
       {/* Content */}
