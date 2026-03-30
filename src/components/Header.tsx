@@ -86,7 +86,14 @@ export default function Header() {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-5 flex-shrink-0">
+          <div className="flex items-center gap-3 xl:gap-5 flex-shrink-0">
+            <a
+              href="mailto:com@aaabez.ru"
+              className="hidden xl:block text-white/80 text-sm font-medium hover:text-white transition-colors"
+            >
+              com@aaabez.ru
+            </a>
+            <span className="hidden xl:block text-white/20">|</span>
             <a
               href="tel:+79996989908"
               className="hidden lg:block text-white/80 text-sm font-medium hover:text-white transition-colors"
@@ -94,8 +101,8 @@ export default function Header() {
               +7 999 698-99-08
             </a>
             <a
-              href="#"
-              className="inline-block px-6 py-2.5 rounded-lg text-[13px] font-semibold transition-all duration-300 cursor-pointer hover:shadow-[0_4px_20px_rgba(245,209,0,0.3)] hover:-translate-y-px"
+              href="#application"
+              className="hidden sm:inline-block px-6 py-2.5 rounded-lg text-[13px] font-semibold transition-all duration-300 cursor-pointer hover:shadow-[0_4px_20px_rgba(245,209,0,0.3)] hover:-translate-y-px"
               style={{ backgroundColor: '#f5d100', color: '#1a0c0a' }}
             >
               Оставить заявку
@@ -182,15 +189,21 @@ export default function Header() {
               {/* Divider */}
               <div className="h-px bg-white/[0.06] my-2" />
 
-              {/* Buttons */}
-              <div className="flex gap-2.5 mt-1">
+              {/* Contact + CTA */}
+              <div className="flex flex-col gap-2.5 mt-1">
                 <a
                   href="tel:+79996989908"
-                  className="flex-1 py-3.5 rounded-xl bg-white/[0.06] border border-white/[0.08] text-white/70 text-[13px] font-medium text-center no-underline"
+                  className="w-full py-3.5 rounded-xl bg-white/[0.06] border border-white/[0.08] text-white/70 text-[13px] font-medium text-center no-underline"
                 >
                   +7 999 698-99-08
                 </a>
-                <button className="flex-1 py-3.5 rounded-xl bg-[#f5d100] text-[#1a0c0a] text-[13px] font-semibold text-center cursor-pointer">
+                <a
+                  href="mailto:com@aaabez.ru"
+                  className="w-full py-3.5 rounded-xl bg-white/[0.06] border border-white/[0.08] text-white/70 text-[13px] font-medium text-center no-underline"
+                >
+                  com@aaabez.ru
+                </a>
+                <button className="w-full py-3.5 rounded-xl bg-[#f5d100] text-[#1a0c0a] text-[13px] font-semibold text-center cursor-pointer">
                   Оставить заявку
                 </button>
               </div>

@@ -121,7 +121,7 @@ export default function ExplosionProofContent() {
               Электротехника
             </span>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold uppercase tracking-[-2px] leading-[0.92] mb-8">
+            <h1 className="text-[32px] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold uppercase tracking-[-1px] sm:tracking-[-2px] leading-[0.92] mb-8">
               <span className="text-white block">Взрыво&shy;защищённое</span>
               <span className="bg-gradient-to-r from-[#f5d100] via-[#e5c922] to-[#f5d100] bg-clip-text text-transparent bg-[length:200%_100%] animate-[shimmer_4s_ease-in-out_infinite]">
                 оборудование
@@ -161,7 +161,7 @@ export default function ExplosionProofContent() {
       </section>
 
       {/* ===== 01: Основа безопасности — Bento grid ===== */}
-      <section id="about" className="bg-[#0a0a0f] py-24 lg:py-32">
+      <section id="about" className="bg-[#0a0a0f] py-16 md:py-24 lg:py-32">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-20">
           <motion.div
             {...fadeUp}
@@ -172,7 +172,7 @@ export default function ExplosionProofContent() {
               01
             </span>
             <h2
-              className="text-white text-4xl lg:text-5xl font-bold uppercase tracking-tight"
+              className="text-white text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight"
               style={{ fontFamily: "'Neutral Face', sans-serif" }}
             >
               Основа безопасности
@@ -243,13 +243,13 @@ export default function ExplosionProofContent() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="lg:col-span-2 bg-gradient-to-r from-[rgba(245,209,0,0.08)] to-[rgba(245,209,0,0.02)] border border-[rgba(245,209,0,0.15)] rounded-3xl p-8 lg:p-10 flex items-center"
             >
-              <div className="grid grid-cols-3 gap-8 w-full text-center">
+              <div className="grid grid-cols-3 gap-3 md:gap-8 w-full text-center">
                 {stats.map((stat) => (
                   <div key={stat.label}>
-                    <span className="text-[#f5d100] text-3xl lg:text-4xl font-bold block">
+                    <span className="text-[#f5d100] text-2xl md:text-3xl lg:text-4xl font-bold block">
                       {stat.num}
                     </span>
-                    <span className="text-white/40 text-xs uppercase tracking-wider mt-1 block">
+                    <span className="text-white/40 text-[10px] md:text-xs uppercase tracking-wider mt-1 block">
                       {stat.label}
                     </span>
                   </div>
@@ -261,7 +261,7 @@ export default function ExplosionProofContent() {
       </section>
 
       {/* ===== 02: Где используется ===== */}
-      <section className="relative bg-[#1A0C0A] py-24 lg:py-32 overflow-hidden">
+      <section className="relative bg-[#1A0C0A] py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[rgba(245,209,0,0.03)] rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[rgba(191,6,3,0.04)] rounded-full blur-[100px]" />
 
@@ -275,7 +275,7 @@ export default function ExplosionProofContent() {
               02
             </span>
             <h2
-              className="text-white text-4xl lg:text-5xl font-bold uppercase tracking-tight"
+              className="text-white text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight"
               style={{ fontFamily: "'Neutral Face', sans-serif" }}
             >
               Где используется
@@ -336,7 +336,7 @@ export default function ExplosionProofContent() {
       </section>
 
       {/* ===== 03: Металлоконструкции — split ===== */}
-      <section className="bg-[#0a0a0f] py-24 lg:py-32">
+      <section className="bg-[#0a0a0f] py-16 md:py-24 lg:py-32">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-20">
           <motion.div
             {...fadeUp}
@@ -347,7 +347,7 @@ export default function ExplosionProofContent() {
               03
             </span>
             <h2
-              className="text-white text-4xl lg:text-5xl font-bold uppercase tracking-tight"
+              className="text-white text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight"
               style={{ fontFamily: "'Neutral Face', sans-serif" }}
             >
               Металлоконструкции
@@ -417,7 +417,7 @@ export default function ExplosionProofContent() {
                 }}
               >
                 <div>
-                  <span className="text-[#f5d100] text-3xl lg:text-4xl font-bold block">
+                  <span className="text-[#f5d100] text-2xl md:text-3xl lg:text-4xl font-bold block">
                     100%
                   </span>
                   <span className="text-white/50 text-sm">
@@ -438,7 +438,7 @@ export default function ExplosionProofContent() {
       </section>
 
       {/* ===== 04: Ассортимент ===== */}
-      <section id="assortment" className="relative bg-[#0a0a0f] py-24 lg:py-32 overflow-hidden">
+      <section id="assortment" className="relative bg-[#0a0a0f] py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[rgba(245,209,0,0.02)] rounded-full blur-[150px]" />
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-20">
@@ -451,7 +451,7 @@ export default function ExplosionProofContent() {
               04
             </span>
             <h2
-              className="text-white text-4xl lg:text-5xl font-bold uppercase tracking-tight"
+              className="text-white text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight"
               style={{ fontFamily: "'Neutral Face', sans-serif" }}
             >
               Ассортимент
@@ -540,7 +540,7 @@ export default function ExplosionProofContent() {
       </section>
 
       {/* ===== 05: Партнёры ===== */}
-      <section className="relative bg-[#1A0C0A] py-24 lg:py-32 overflow-hidden">
+      <section className="relative bg-[#1A0C0A] py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[rgba(245,209,0,0.03)] rounded-full blur-[120px]" />
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-20">
@@ -553,7 +553,7 @@ export default function ExplosionProofContent() {
               05
             </span>
             <h2
-              className="text-white text-4xl lg:text-5xl font-bold uppercase tracking-tight"
+              className="text-white text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight"
               style={{ fontFamily: "'Neutral Face', sans-serif" }}
             >
               Партнёры
@@ -596,7 +596,7 @@ export default function ExplosionProofContent() {
       </section>
 
       {/* ===== 06: Наши заказчики ===== */}
-      <section className="relative bg-[#0a0a0f] py-24 lg:py-32 overflow-hidden">
+      <section className="relative bg-[#0a0a0f] py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[rgba(245,209,0,0.03)] rounded-full blur-[120px]" />
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-20">
@@ -609,7 +609,7 @@ export default function ExplosionProofContent() {
               06
             </span>
             <h2
-              className="text-white text-4xl lg:text-5xl font-bold uppercase tracking-tight"
+              className="text-white text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight"
               style={{ fontFamily: "'Neutral Face', sans-serif" }}
             >
               Наши заказчики

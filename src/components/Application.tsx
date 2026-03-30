@@ -23,7 +23,12 @@ export default function Application() {
     if (!form.name || !form.phone) return;
     setStatus("sending");
     try {
-      await new Promise((r) => setTimeout(r, 1000));
+      const res = await fetch("/api/application", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed");
       setStatus("success");
       setForm({ name: "", company: "", position: "", email: "", phone: "", comments: "" });
       setTimeout(() => setStatus("idle"), 4000);
@@ -43,7 +48,7 @@ export default function Application() {
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[rgba(245,209,0,0.04)] rounded-full blur-[150px]" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[rgba(191,6,3,0.03)] rounded-full blur-[120px]" />
 
-      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-20 py-24 lg:py-32">
+      <div className="relative max-w-[1400px] mx-auto px-6 lg:px-20 py-16 md:py-24 lg:py-32">
         {/* Top: centered header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -56,7 +61,7 @@ export default function Application() {
             04
           </span>
           <h2
-            className="text-white text-4xl lg:text-5xl font-bold uppercase tracking-tight mb-4"
+            className="text-white text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight mb-4"
             style={{ fontFamily: "'Neutral Face', sans-serif" }}
           >
             Свяжитесь с нами

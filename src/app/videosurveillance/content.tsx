@@ -57,7 +57,7 @@ export default function VideoSurveillanceContent() {
               Видеонаблюдение и СКУД
             </span>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold uppercase tracking-[-2px] leading-[0.92] mb-8">
+            <h1 className="text-[32px] sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold uppercase tracking-[-1px] sm:tracking-[-2px] leading-[0.92] mb-8">
               <span className="text-white block">Системы</span>
               <span className="bg-gradient-to-r from-[#f5d100] via-[#e5c922] to-[#f5d100] bg-clip-text text-transparent bg-[length:200%_100%] animate-[shimmer_4s_ease-in-out_infinite]">
                 видео&shy;наблюдения
@@ -90,11 +90,11 @@ export default function VideoSurveillanceContent() {
       </section>
 
       {/* ===== 01: СКУД — Bento grid ===== */}
-      <section id="skud" className="bg-[#0a0a0f] py-24 lg:py-32">
+      <section id="skud" className="bg-[#0a0a0f] py-16 md:py-24 lg:py-32">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-20">
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-16">
             <span className="text-[#f5d100] text-sm font-semibold tracking-[4px] uppercase block mb-4">01</span>
-            <h2 className="text-white text-4xl lg:text-5xl font-bold uppercase tracking-tight" style={{ fontFamily: "'Neutral Face', sans-serif" }}>
+            <h2 className="text-white text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight" style={{ fontFamily: "'Neutral Face', sans-serif" }}>
               Видеонаблюдение и СКУД
             </h2>
           </motion.div>
@@ -174,13 +174,13 @@ export default function VideoSurveillanceContent() {
       </section>
 
       {/* ===== 02: ЭБП — split with accent ===== */}
-      <section className="relative bg-[#1A0C0A] py-24 lg:py-32 overflow-hidden">
+      <section className="relative bg-[#1A0C0A] py-16 md:py-24 lg:py-32 overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[rgba(245,209,0,0.03)] rounded-full blur-[120px]" />
 
         <div className="relative max-w-[1400px] mx-auto px-6 lg:px-20">
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-16">
             <span className="text-[#f5d100] text-sm font-semibold tracking-[4px] uppercase block mb-4">02</span>
-            <h2 className="text-white text-4xl lg:text-5xl font-bold uppercase tracking-tight" style={{ fontFamily: "'Neutral Face', sans-serif" }}>
+            <h2 className="text-white text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight" style={{ fontFamily: "'Neutral Face', sans-serif" }}>
               Электронное бюро пропусков
             </h2>
           </motion.div>
@@ -188,7 +188,7 @@ export default function VideoSurveillanceContent() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
             {/* Image — 2 cols */}
             <motion.div {...fadeUp} transition={{ duration: 0.6 }}
-              className="lg:col-span-2 rounded-3xl overflow-hidden border border-white/[0.08] relative min-h-[350px]">
+              className="lg:col-span-2 rounded-3xl overflow-hidden border border-white/[0.08] relative min-h-[250px] md:min-h-[350px]">
               <Image src="/images/video/electronic-office.png" alt="ЭБП" fill className="object-cover" />
             </motion.div>
 
@@ -208,7 +208,7 @@ export default function VideoSurveillanceContent() {
               <div className="rounded-2xl p-6 flex items-center justify-between gap-6 flex-wrap"
                 style={{ backgroundColor: "rgba(245,209,0,0.1)", border: "1px solid rgba(245,209,0,0.2)" }}>
                 <div>
-                  <span className="text-[#f5d100] text-3xl lg:text-4xl font-bold block">30–50%</span>
+                  <span className="text-[#f5d100] text-2xl md:text-3xl lg:text-4xl font-bold block">30–50%</span>
                   <span className="text-white/50 text-sm">снижение затрат на контроль доступа</span>
                 </div>
                 <a href="#application"
@@ -223,11 +223,11 @@ export default function VideoSurveillanceContent() {
       </section>
 
       {/* ===== 03: Партнёры ===== */}
-      <section className="bg-[#0a0a0f] py-24 lg:py-32">
+      <section className="bg-[#0a0a0f] py-16 md:py-24 lg:py-32">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-20">
           <motion.div {...fadeUp} transition={{ duration: 0.6 }} className="text-center mb-16">
             <span className="text-[#f5d100] text-sm font-semibold tracking-[4px] uppercase block mb-4">03</span>
-            <h2 className="text-white text-4xl lg:text-5xl font-bold uppercase tracking-tight" style={{ fontFamily: "'Neutral Face', sans-serif" }}>
+            <h2 className="text-white text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight" style={{ fontFamily: "'Neutral Face', sans-serif" }}>
               Партнёры
             </h2>
             <p className="text-white/40 text-base mt-3">Нам доверяют ведущие компании</p>
@@ -237,9 +237,9 @@ export default function VideoSurveillanceContent() {
             className="bg-white/[0.03] border border-white/[0.08] rounded-3xl overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2">
               {/* Left — dark accent panel */}
-              <div className="bg-gradient-to-br from-[rgba(245,209,0,0.08)] to-transparent p-10 lg:p-14 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/[0.06]">
-                <Image src="/images/icon/logo-mcy.svg" alt="ГК МСУ-1" width={180} height={70} className="mb-10 brightness-0 invert opacity-80" />
-                <div className="grid grid-cols-3 gap-6">
+              <div className="bg-gradient-to-br from-[rgba(245,209,0,0.08)] to-transparent p-6 md:p-10 lg:p-14 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/[0.06]">
+                <Image src="/images/icon/logo-mcy.svg" alt="ГК МСУ-1" width={180} height={70} className="mb-6 md:mb-10 brightness-0 invert opacity-80" />
+                <div className="grid grid-cols-3 gap-3 md:gap-6">
                   {partnerStats.map((stat, i) => (
                     <motion.div key={stat.label}
                       initial={{ opacity: 0, y: 15 }}
@@ -254,7 +254,7 @@ export default function VideoSurveillanceContent() {
               </div>
 
               {/* Right — text */}
-              <div className="p-10 lg:p-14">
+              <div className="p-6 md:p-10 lg:p-14">
                 <h3 className="text-white text-2xl font-bold mb-6" style={{ fontFamily: "'Neutral Face', sans-serif" }}>
                   ГК «МСУ-1»
                 </h3>
