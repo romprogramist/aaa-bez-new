@@ -463,11 +463,12 @@ export default function ExplosionProofContent() {
 
           {/* Main grid — featured item + list */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Left — active/featured card */}
+            {/* Left — active/featured card (on mobile: shown after grid) */}
             <motion.div
+              id="assortment-featured"
               {...fadeUp}
               transition={{ duration: 0.6 }}
-              className="rounded-3xl overflow-hidden border border-white/[0.08] bg-white/[0.03] relative group self-start lg:sticky lg:top-24"
+              className="rounded-3xl overflow-hidden border border-white/[0.08] bg-white/[0.03] relative group self-start lg:sticky lg:top-24 order-2 lg:order-1"
             >
               {(activeItem || assortment[0]) && (
                 <>
@@ -499,8 +500,8 @@ export default function ExplosionProofContent() {
               )}
             </motion.div>
 
-            {/* Right — scrollable grid */}
-            <div className="grid grid-cols-2 gap-3 auto-rows-min">
+            {/* Right — scrollable grid (on mobile: shown first) */}
+            <div className="grid grid-cols-2 gap-3 auto-rows-min order-1 lg:order-2">
               {assortment.map((item, i) => (
                 <motion.button
                   key={item.id}
@@ -508,7 +509,13 @@ export default function ExplosionProofContent() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-30px" }}
                   transition={{ duration: 0.3, delay: i * 0.04 }}
-                  onClick={() => setActiveItem(item)}
+                  onClick={() => {
+                    setActiveItem(item);
+                    const el = document.getElementById("assortment-featured");
+                    if (el && window.innerWidth < 1024) {
+                      el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                  }}
                   className={`group/card rounded-2xl overflow-hidden border text-left cursor-pointer transition-all duration-400 relative ${
                     (activeItem?.id || assortment[0]?.id) === item.id
                       ? "border-[rgba(245,209,0,0.4)] bg-[rgba(245,209,0,0.06)]"
