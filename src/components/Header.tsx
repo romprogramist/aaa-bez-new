@@ -203,9 +203,13 @@ export default function Header() {
                 >
                   com@aaabez.ru
                 </a>
-                <button className="w-full py-3.5 rounded-xl bg-[#f5d100] text-[#1a0c0a] text-[13px] font-semibold text-center cursor-pointer">
+                <a
+                  href="#application"
+                  onClick={() => setMenuOpen(false)}
+                  className="w-full py-3.5 rounded-xl bg-[#f5d100] text-[#1a0c0a] text-[13px] font-semibold text-center cursor-pointer block no-underline"
+                >
                   Оставить заявку
-                </button>
+                </a>
               </div>
             </motion.div>
           </>
