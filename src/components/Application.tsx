@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Application() {
@@ -12,7 +12,21 @@ export default function Application() {
     phone: "",
     comments: "",
   });
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error" | "throttled">("idle");
+  // До гидратации кнопка заблокирована: иначе браузер отправляет форму
+  // нативным GET-запросом и заявка теряется.
+  const [ready, setReady] = useState(false);
+  // Honeypot: скрытое поле, которое заполняют только боты.
+  const [website, setWebsite] = useState("");
+  const loadedAtRef = useRef(0);
+  // Защита от двойной отправки: состояние обновляется асинхронно,
+  // ref срабатывает сразу.
+  const sendingRef = useRef(false);
+
+  useEffect(() => {
+    loadedAtRef.current = Date.now();
+    setReady(true);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -21,13 +35,20 @@ export default function Application() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.phone) return;
+    if (sendingRef.current) return;
+    sendingRef.current = true;
     setStatus("sending");
     try {
       const res = await fetch("/api/application", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, website, formLoadedAt: loadedAtRef.current }),
       });
+      if (res.status === 429) {
+        setStatus("throttled");
+        setTimeout(() => setStatus("idle"), 6000);
+        return;
+      }
       if (!res.ok) throw new Error("Failed");
       setStatus("success");
       setForm({ name: "", company: "", position: "", email: "", phone: "", comments: "" });
@@ -35,6 +56,8 @@ export default function Application() {
     } catch {
       setStatus("error");
       setTimeout(() => setStatus("idle"), 4000);
+    } finally {
+      sendingRef.current = false;
     }
   };
 
@@ -83,6 +106,20 @@ export default function Application() {
             onSubmit={handleSubmit}
             className="bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-3xl p-8 lg:p-12"
           >
+            {/* Honeypot — скрыт от людей, ловит ботов */}
+            <div aria-hidden="true" className="absolute w-px h-px overflow-hidden opacity-0 -left-[9999px]">
+              <label htmlFor="website">Не заполняйте это поле</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             {/* Row 1: name, company, position */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
               <div>
@@ -177,7 +214,7 @@ export default function Application() {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
               <button
                 type="submit"
-                disabled={status === "sending"}
+                disabled={!ready || status === "sending"}
                 className="group relative px-10 py-4 rounded-xl text-sm font-semibold cursor-pointer disabled:opacity-60 overflow-hidden transition-all duration-300 hover:shadow-[0_8px_32px_rgba(245,209,0,0.25)] hover:-translate-y-0.5"
                 style={{ backgroundColor: "#f5d100", color: "#1a0c0a" }}
               >
@@ -205,6 +242,17 @@ export default function Application() {
               >
                 <p className="text-[#f5d100] text-sm font-medium">
                   ✓ Заявка отправлена! Мы свяжемся с вами в ближайшее время.
+                </p>
+              </motion.div>
+            )}
+            {status === "throttled" && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-6 p-4 rounded-xl bg-[rgba(245,209,0,0.08)] border border-[rgba(245,209,0,0.2)]"
+              >
+                <p className="text-[#f5d100] text-sm font-medium">
+                  Заявка уже отправлена. Мы свяжемся с вами — или позвоните +7 999 698-99-08
                 </p>
               </motion.div>
             )}

@@ -52,3 +52,21 @@ model Customer {
 
   @@map("customers")
 }
+
+model Application {
+  id        String   @id @default(uuid())
+  name      String
+  company   String?
+  position  String?
+  email     String?
+  phone     String
+  comments  String?
+  ip        String?
+  userAgent String?
+  emailed   Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([phone])
+  @@map("applications")
+}
